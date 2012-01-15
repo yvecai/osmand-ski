@@ -22,6 +22,7 @@
 		vectoriel dans Osmand. \n Allez dans paramétres -> Carte -> Moteur de
 		rendu vectoriel et choisissez \'Winter\'.</string>
 	<string name="choose_version">Choisissez votre version de OsmAnd :</string>
+	<string name="downloading_msg">"Téléchargement world-ski.obf (~8 MB)"</string>
 	<string name="pistes_status">Dernière mises à jour des pistes :</string>
 	<string name="quit">Quittez</string>
 	<string name="recruit">Contribuez !\n Cette carte des pistes sont mises à jour et

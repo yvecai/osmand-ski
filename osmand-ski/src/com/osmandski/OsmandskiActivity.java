@@ -219,7 +219,7 @@ public class OsmandskiActivity extends Activity {
 	public void getPistes()
     {
     	//Download the world-ski.obf
-		  mStatus.setText("Downloading world-ski.obf (~12 MB)");
+		  mStatus.setText(R.string.downloading_msg);
 		  String file_URL=
 		  "http://www.pistes-nordiques.org/download/world-ski.obf.gz";
 //		  String file_URL=

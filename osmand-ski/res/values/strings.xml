@@ -21,6 +21,7 @@
 	<string name="help"> Don\'t forget to change the renderer in OsmAnd.\n
 		Go to Settings > Maps > Vector Renderer and choose Winter.</string>
 	<string name="choose_version">Choose your OsmAnd version :</string>
+	<string name="downloading_msg">"Downloading world-ski.obf (~8 MB)"</string>
 	<string name="pistes_status">Last pistes data update :</string>
 	<string name="quit">Quit</string>
 	<string name="recruit">Contribute !\n These ski maps are updated and
