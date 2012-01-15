@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/scroll"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:weightSum="1">
+
+<LinearLayout 
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+<LinearLayout android:id="@+id/linearLayout2" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+    <ImageView android:layout_width="wrap_content" 
+	android:src="@drawable/icon" android:id="@+id/imageView1" 
+	android:layout_height="wrap_content" android:paddingLeft="5px" android:paddingRight="10px"></ImageView>
+    <TextView android:id="@+id/textView2" 
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/title" android:paddingTop="10px"></TextView>
+</LinearLayout>
+
+<TextView android:id="@+id/textView2" 
+android:textAppearance="?android:attr/textAppearanceSmall" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="@string/summary" android:textColor="#FF888888"></TextView>
+<TextView android:id="@+id/textView4" 
+android:textAppearance="?android:attr/textAppearanceSmall" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="@string/summary2" android:textColor="#FF888888"></TextView>
+
+<ProgressBar android:layout_height="wrap_content" 
+android:layout_gravity="center" 
+style="?android:attr/progressBarStyleHorizontal" 
+android:layout_width="fill_parent" 
+android:id="@+id/progressBar" android:padding="5px"></ProgressBar>
+<TextView android:id="@+id/status" 
+android:textAppearance="?android:attr/textAppearanceMedium" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text=" " android:textColor="#FF888888"></TextView>
+
+<TextView android:id="@+id/textView5" 
+android:textAppearance="?android:attr/textAppearanceSmall" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="@string/choose_version" android:textColor="#FFAAAAAA"
+android:textStyle="bold"></TextView>
+
+	<Button android:layout_height="wrap_content" 
+	android:layout_width="200dp" android:text="@string/install"
+	 android:layout_gravity="center" android:id="@+id/install"
+	></Button>
+	<Button android:layout_height="wrap_content" 
+	android:layout_width="200dp" android:text="@string/install_plus"
+	 android:layout_gravity="center" android:id="@+id/install_plus"
+	 ></Button>
+	 <Button android:layout_height="wrap_content" 
+	android:layout_width="200dp" android:text="@string/install_latest"
+	 android:layout_gravity="center" android:id="@+id/install_latest"
+	 ></Button>
+	<Button android:layout_height="wrap_content" 
+	android:layout_width="200dp" android:text="@string/cancel"
+	android:layout_gravity="center" android:id="@+id/cancel"
+	android:visibility="gone"
+	></Button>
+
+<TextView android:id="@+id/textView6" 
+android:textAppearance="?android:attr/textAppearanceSmall" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:textColor="#FFAAAAAA" android:text="@string/pistes_status"
+android:textStyle="bold"></TextView>
+
+<TextView android:id="@+id/pistes_status" 
+android:textAppearance="?android:attr/textAppearanceSmall" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:textColor="#FF888888" android:text="---"></TextView>
+
+<!-- <LinearLayout android:id="@+id/linearLayout1"  -->
+<!-- android:layout_width="fill_parent" android:orientation="vertical"  -->
+<!-- android:background="#55555555" -->
+<!-- android:baselineAligned="true"  -->
+<!-- android:layout_height="wrap_content"> -->
+<!--     <TextView android:id="@+id/textView1"  -->
+<!--     android:textAppearance="?android:attr/textAppearanceSmall"  -->
+<!--     android:layout_width="wrap_content"  -->
+<!--     android:text="@string/thanks"  -->
+<!--     android:layout_height="wrap_content"  -->
+<!--     android:layout_gravity="center" android:textColor="#FF888888"></TextView> -->
+    
+<!--     <ImageView android:layout_width="wrap_content" android:src="@drawable/osmlogo" android:id="@+id/imageView2" android:layout_height="wrap_content" android:adjustViewBounds="true" android:scrollbarAlwaysDrawHorizontalTrack="true" android:layout_gravity="center" android:padding="5px"></ImageView> -->
+<!--     <TextView android:layout_width="wrap_content"  -->
+<!--     android:layout_height="wrap_content"  -->
+<!--     android:textAppearance="?android:attr/textAppearanceSmall"  -->
+<!--     android:id="@+id/textView3" android:text="@string/osm" android:layout_gravity="center" android:paddingBottom="5px"></TextView> -->
+    
+<!--     <ImageView android:layout_width="wrap_content" android:src="@drawable/pistesnordiqueslogo" android:id="@+id/imageView3" android:layout_height="wrap_content" android:scrollbarAlwaysDrawHorizontalTrack="true" android:layout_gravity="center" android:padding="5px"></ImageView> -->
+<!--     <TextView android:layout_width="wrap_content"  -->
+<!--     android:layout_height="wrap_content"  -->
+<!--     android:textAppearance="?android:attr/textAppearanceSmall" -->
+<!-- 	android:id="@+id/textView4" android:text="@string/pn" android:layout_gravity="center" android:paddingBottom="5px"></TextView> -->
+    
+<!--     <ImageView android:layout_width="wrap_content" android:src="@drawable/osmandlogo" android:id="@+id/imageView4" android:layout_height="wrap_content" android:baselineAlignBottom="true" android:scrollbarAlwaysDrawHorizontalTrack="true" android:layout_gravity="center"></ImageView> -->
+<!--     <TextView android:layout_width="wrap_content"  -->
+<!--     android:layout_height="wrap_content"  -->
+<!--     android:textAppearance="?android:attr/textAppearanceSmall"  -->
+<!--     android:id="@+id/textView5" android:text="@string/oa" android:layout_gravity="center" android:paddingBottom="5px"></TextView> -->
+<!-- </LinearLayout> -->
+</LinearLayout>
+</ScrollView>
