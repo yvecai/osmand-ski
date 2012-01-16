@@ -5,9 +5,7 @@
 	<string name="thanks">Merci à :</string>
 	<string name="summary">OsmAnd Ski est un plugin destiné à installer et
 		mettre à jour les pistes de ski dans Osmand.</string>
-	<string name="install">OsmAnd 0.5.3</string>
-	<string name="install_latest">OsmAnd night build (dev)</string>
-	<string name="install_plus">OsmAnd+</string>
+	<string name="install">Installer</string>
 	<string name="osm">www.openstreetmap.org</string>
 	<string name="pn">www.pistes-nordiques.org</string>
 	<string name="oa">www.osmand.net</string>
@@ -30,4 +28,8 @@
 	et contribuez OpenStreetMap.</string>
 	<string name="server_error">Impossible de ce connecter au serveur de données des pistes de ski.\n
 	    Contacter webmaster@pistes-nordiques.org</string>
+	<string name="unsupported">Votre version d\'Osmand n\'est pas supportée. Vous devriez mettre à jour vers OsmAnd 0.7.0 ou OsmAnd+ 0.7.0</string>
+	<string name="anyway">Continuer malgré tout</string>
+	<string name="no_osmand">Osmand ou Osmand+ n\'est pas installé.</string>
+	
 </resources>

@@ -61,14 +61,6 @@ android:textStyle="bold"></TextView>
 	 android:layout_gravity="center" android:id="@+id/install"
 	></Button>
 	<Button android:layout_height="wrap_content" 
-	android:layout_width="200dp" android:text="@string/install_plus"
-	 android:layout_gravity="center" android:id="@+id/install_plus"
-	 ></Button>
-	 <Button android:layout_height="wrap_content" 
-	android:layout_width="200dp" android:text="@string/install_latest"
-	 android:layout_gravity="center" android:id="@+id/install_latest"
-	 ></Button>
-	<Button android:layout_height="wrap_content" 
 	android:layout_width="200dp" android:text="@string/cancel"
 	android:layout_gravity="center" android:id="@+id/cancel"
 	android:visibility="gone"

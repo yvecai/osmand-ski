@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.lang.Math;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
@@ -25,6 +26,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.DialogInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import java.util.zip.GZIPInputStream;
 
@@ -46,34 +50,6 @@ public class OsmandskiActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        
-        Button buttonInstall = (Button)findViewById(R.id.install);
-        buttonInstall.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-      		  copyStyle(StyleFileName);
-      		  getPistes();
-
-            }
-        });
-        
-        
-        Button buttonInstallPlus = (Button)findViewById(R.id.install_plus);
-        buttonInstallPlus.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-      		  copyStyle(PlusStyleFileName);
-      		  getPistes();
-
-            }
-        });
-        Button buttonInstallLatest = (Button)findViewById(R.id.install_latest);
-        buttonInstallLatest.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-      		  copyStyle(DevStyleFileName);
-      		  getPistes();
-
-            }
-        });
-        
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mStatus = (TextView) findViewById(R.id.status);
         TextView mPistes = (TextView) findViewById(R.id.pistes_status);
@@ -82,22 +58,73 @@ public class OsmandskiActivity extends Activity {
                     DownloadText("http://www.pistes-nordiques.org/status/pistes_length.en.txt");     	
         
         mPistes.setText(str);
-//        PackageManager manager = this.getPackageManager();
-//        PackageInfo info;
-//		try {
-//			info = manager.getPackageInfo("net.osmand.plus", 0);
+        
+        // checking installed versions
+        PackageManager manager = this.getPackageManager();
+        PackageInfo info;
+        
+        int osmandVersionCode=0;
+        int osmandPlusVersionCode=0;
+		try {
+			info = manager.getPackageInfo("net.osmand", 0);
+			osmandVersionCode= info.versionCode;
 //		      Toast.makeText(
 //		    	        this,
 //		    	        "PackageName = " + info.packageName + "\nVersionCode = "
 //		    	         + info.versionCode + "\nVersionName = "
 //		    	         + info.versionName + "\nPermissions = "+info.permissions, Toast.LENGTH_SHORT).show();
-//
-//		} catch (NameNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
- 
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			info = manager.getPackageInfo("net.osmand.plus", 0);
+			osmandPlusVersionCode= info.versionCode;
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int higherVersion= Math.max(osmandVersionCode,osmandPlusVersionCode);
+		if (higherVersion == 0) {
+	        AlertDialog.Builder builder = new AlertDialog.Builder(OsmandskiActivity.this);
+	        builder.setMessage(R.string.no_osmand)
+	               .setCancelable(false)
+	               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                        finish();
+	                   }
+	               });
+	        AlertDialog alert = builder.create();
+            alert.show();
+		}
+		else if (higherVersion < 40){
+	        AlertDialog.Builder builder = new AlertDialog.Builder(OsmandskiActivity.this);
+	        builder.setMessage(R.string.unsupported)
+	               .setCancelable(false)
+	               	               .setNegativeButton(R.string.anyway, new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                	   dialog.cancel();
+	                   }
+	               })
+	               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                        finish();
+	                   }
+	               });
+	        AlertDialog alert = builder.create();
+            alert.show();
+		}
+	               
+        Button buttonInstall = (Button)findViewById(R.id.install);
+        buttonInstall.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+      		  copyStyle(PlusStyleFileName);
+      		  getPistes();
 
+            }
+        });
+        
     }
 
 	public String DownloadText(String URL)
@@ -228,10 +255,6 @@ public class OsmandskiActivity extends Activity {
 
 		  Button buttonInstall = (Button)findViewById(R.id.install);
 	      buttonInstall.setVisibility(View.GONE);
-		  Button buttonInstallLatest = (Button)findViewById(R.id.install_latest);
-		  buttonInstallLatest.setVisibility(View.GONE);
-		  Button buttonInstallPlus = (Button)findViewById(R.id.install_plus);
-		  buttonInstallPlus.setVisibility(View.GONE);
 		  
 		  Button buttonCancel = (Button)findViewById(R.id.cancel);
 		  buttonCancel.setVisibility(View.VISIBLE);
