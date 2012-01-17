@@ -9,7 +9,7 @@ android:weightSum="1">
 <LinearLayout 
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     >
     
 <LinearLayout android:id="@+id/linearLayout2" 
@@ -18,15 +18,15 @@ android:layout_height="wrap_content"
 android:orientation="horizontal">
     <ImageView android:layout_width="wrap_content" 
 	android:src="@drawable/icon" android:id="@+id/imageView1" 
-	android:layout_height="wrap_content" android:paddingLeft="5px" android:paddingRight="10px"></ImageView>
+	android:layout_height="wrap_content" android:paddingLeft="5dp" android:paddingRight="10dp"></ImageView>
     <TextView android:id="@+id/textView2" 
     android:textAppearance="?android:attr/textAppearanceLarge" 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/title" android:paddingTop="10px"></TextView>
+    android:text="@string/title" android:paddingTop="10dp"></TextView>
 </LinearLayout>
 
-<TextView android:id="@+id/textView2" 
+<TextView android:id="@+id/textView3" 
 android:textAppearance="?android:attr/textAppearanceSmall" 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
@@ -41,12 +41,12 @@ android:text="@string/summary2" android:textColor="#FF888888"></TextView>
 android:layout_gravity="center" 
 style="?android:attr/progressBarStyleHorizontal" 
 android:layout_width="fill_parent" 
-android:id="@+id/progressBar" android:padding="5px"></ProgressBar>
+android:id="@+id/progressBar" android:padding="5dp"></ProgressBar>
 <TextView android:id="@+id/status" 
 android:textAppearance="?android:attr/textAppearanceMedium" 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text=" " android:textColor="#FF888888"></TextView>
+android:textColor="#FF888888"></TextView>
 
 <TextView android:id="@+id/textView5" 
 android:textAppearance="?android:attr/textAppearanceSmall" 
@@ -79,7 +79,7 @@ android:textAppearance="?android:attr/textAppearanceSmall"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_gravity="center"
-android:textColor="#FF888888" android:text="---"></TextView>
+android:textColor="#FF888888"></TextView>
 
 <!-- <LinearLayout android:id="@+id/linearLayout1"  -->
 <!-- android:layout_width="fill_parent" android:orientation="vertical"  -->
