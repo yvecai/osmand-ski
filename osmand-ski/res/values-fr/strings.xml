@@ -2,24 +2,21 @@
 <resources>
 	<string name="title">OsmAnd Ski Plugin 0.17 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
-<!-- 	<string name="thanks">Merci à :</string> -->
 	<string name="summary">OsmAnd Ski est un plugin destiné à installer et
 		mettre à jour les pistes de ski dans Osmand.</string>
 	<string name="install">Installer</string>
 	<string name="osm">www.openstreetmap.org</string>
-<!-- 	<string name="pn">www.pistes-nordiques.org</string> -->
-<!-- 	<string name="oa">www.osmand.net</string> -->
 	<string name="summary2">~8MB de pistes seront téléchargées.</string>
 	<string name="description">OsmAnd Ski installe le plan des pistes de ski du
 		monde entier (~8MB) dans le répertoire de OsmAnd. Ces données vous
 		donne accès à près de 18\'000km de ski de descente et 16\'000 km de ski
-		nordique, 11\'000 km de remontées mécaniques. Osmand obligatoire.
+		nordique, 11\'000 km de remontées mécaniques. 
+		Osmand obligatoire.
 	</string>
 	<string name="cancel">Annuler</string>
 	<string name="help"> N\'oubliez pas de modifier le moteur de rendu
 		vectoriel dans Osmand. \n Allez dans paramétres -> Carte -> Moteur de
 		rendu vectoriel et choisissez \'Winter\'.</string>
-	<string name="choose_version">Choisissez votre version de OsmAnd :</string>
 	<string name="downloading_msg">"Téléchargement world-ski.obf (~8 MB)"</string>
 	<string name="pistes_status">Dernière mises à jour des pistes :</string>
 	<string name="quit">Quittez</string>
@@ -31,5 +28,4 @@
 	<string name="unsupported">Votre version d\'Osmand n\'est pas supportée. Vous devriez mettre à jour vers OsmAnd 0.7.0 ou OsmAnd+ 0.7.0</string>
 	<string name="anyway">Continuer malgré tout</string>
 	<string name="no_osmand">Osmand ou Osmand+ n\'est pas installé.</string>
-	
 </resources>
