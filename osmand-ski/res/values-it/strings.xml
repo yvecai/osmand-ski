@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="title">OsmAnd Ski Plugin 0.17 (beta)</string>
+	<string name="app_name">Osmand Ski</string>
+	<string name="thanks">grazie a :</string>
+	<string name="summary">OsmAnd Ski è un plugin che installa e aggiorna
+		le piste da sci su Osmand.</string>
+	<string name="install">Installa</string>
+	<string name="osm">www.openstreetmap.org</string>
+	<string name="pn">www.pistes-nordiques.org</string>
+	<string name="oa">www.osmand.net</string>
+	<string name="summary2">Saranno scaricati ~8MB di piste da sci.</string>
+	<string name="description">OsmAnd Ski installerà piste da sci da tutto il mondo
+		(~8MB di dati) nella tua directory data/ di OsmAnd. Ti darà
+		accesso libero ad una mappa offline contenente più di 18 mila km di piste da sci alpino,
+		16 mila km di piste da fondo e 11 mila km di impianti di risalita da tutto il mondo.
+		Richiede OsmAnd.</string>
+	<string name="cancel">Cancella</string>
+	<string name="help"> Non dimenticarti di cambiare il renderer in OsmAnd.\n
+		Vai in Impostazioni > Mappe > Renderer Vettoriale e scegli Inverno.</string>
+	<string name="choose_version">Scegli la tua versione di OsmAnd :</string>
+	<string name="downloading_msg">"Scaricando world-ski.obf (~8 MB)"</string>
+	<string name="pistes_status">Ultimo aggiornamento dei dati :</string>
+	<string name="quit">Chiudi</string>
+	<string name="recruit">Contribuisci !\n Queste mappe delle piste sono aggiornate e offerte 
+		gratuitamente grazie ad OpenStreetMap. Avvia il GPS mentre scii
+		e contribuisci anche tu!</string>
+	<string name="server_error">Errore di connessione al server delle piste. \n
+	    Segnalalo a webmaster@pistes-nordiques.org</string>
+	<string name="unsupported">La tua versione di OsmAnd non è supportata, dovresti
+		aggiornare a OsmAnd 0.7.0 o OsmAnd+ 0.7.0</string>
+	<string name="anyway">Installa lo stesso</string>
+	<string name="no_osmand">Nè Osmand nè Osmand+ sono installati.</string>	
+</resources>
