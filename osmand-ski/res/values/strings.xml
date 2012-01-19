@@ -21,7 +21,7 @@
 	<string name="quit">Quit</string>
 	<string name="recruit">Contribute !\n These ski maps are updated and
 		offered for free, thanks to OpenStreetMap. Start your GPS while skiing
-		and contribute to OpenStreeMap.</string>
+		and contribute to OpenStreetMap.</string>
 	<string name="server_error">Error connecting to ski pistes data server. \n
 	    Report to webmaster@pistes-nordiques.org</string>
 	<string name="unsupported">Your OsmAnd version is not supported, you should consider update to OsmAnd 0.7.0 or OsmAnd+ 0.7.0</string>
