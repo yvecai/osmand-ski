@@ -2,29 +2,30 @@
 <resources>
 	<string name="title">OsmAnd Ski Plugin 0.17 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
-	<string name="summary">OsmAnd Ski is a plugin to install and update ski
-		pistes view on Osmand.</string>
-	<string name="install">Install</string>
+	<string name="summary">OsmAnd Ski je plugin na instalaci a aktualizaci map 
+		sjezdovek v OsmAnd.</string>
+	<string name="install">Instalace</string>
 	<string name="osm">www.openstreetmap.org</string>
-	<string name="summary2">~8MB of ski trails will be downloaded.</string>
-	<string name="description">OsmAnd Ski will install world-wide ski trails
-		(~8MB of data) in your OsmAnd data directory. This give you free
-		access to an offline map containing more than 18\'000km of downhill
-		ski pistes, 16\'000 km of crosscountry, 11\'000 km of lifts world-wide.
-		Requires OsmAnd.
-		</string>
-	<string name="cancel">Cancel</string>
-	<string name="help"> Don\'t forget to change the renderer in OsmAnd.\n
-		Go to Settings > Maps > Vector Renderer and choose Winter.</string>
-	<string name="downloading_msg">"Downloading world-ski.obf (~8 MB)"</string>
-	<string name="pistes_status">Last pistes data update :</string>
-	<string name="quit">Quit</string>
-	<string name="recruit">Contribute !\n These ski maps are updated and
-		offered for free, thanks to OpenStreetMap. Start your GPS while skiing
-		and contribute to OpenStreetMap.</string>
-	<string name="server_error">Error connecting to ski pistes data server. \n
-	    Report to webmaster@pistes-nordiques.org</string>
-	<string name="unsupported">Your OsmAnd version is not supported, you should consider update to OsmAnd 0.7.0 or OsmAnd+ 0.7.0</string>
-	<string name="anyway">Install anyway</string>
-	<string name="no_osmand">Neither Osmand nor Osmand+ is installed.</string>	
+	<string name="summary2">Bude staženo ~8MB lyžařských tras.</string>
+	<string name="description">OsmAnd Ski bude instalovat lyžařské trasy celého světa 
+		(~8MB dat) do vašeho datového adresáře OsmAnd. Získáte tím volný 
+		přístup k offline mapám, obsahujícím více než 18\'000km sjezdových 
+		lyžařských tratí, 16\'000 km běžeckých tras a 11\'000 km vleků celého světa.
+		Potřebuje k funkci OsmAnd.
+	</string>
+	<string name="cancel">Zrušit</string>
+	<string name="help"> Nezapomeňte v OsmAnd změnit vykreslování.\n
+		Jděte do Nastavení > Mapa > Vektorový vykreslovač and vyberte Winter+ski.</string>
+	<string name="downloading_msg">"Stahuji world-ski.obf (~8 MB)"</string>
+	<string name="pistes_status">Poslední aktualizace dat sjezdovek :</string>
+	<string name="quit">Ukončit</string>
+	<string name="recruit">Přispějte!\n Tyto lyžařské mapy jsou aktualizovány 
+		a poskytovány zdarma, a to díky OpenStreetMap. Zapněte vaší GPS při lyžování 
+		a přispějte do OpenStreetMap.</string>
+	<string name="server_error">Chyba připojení k datovému serveru sjezdovek. \n
+		Reportujte problém na webmaster@pistes-nordiques.org</string>
+	<string name="unsupported">Vaše OsmAnd verze není podporována, měli byste zvážit aktualizaci na OsmAnd 0.7.0 nebo OsmAnd+ 0.7.0</string>
+	<string name="anyway">Přesto instalovat</string>
+	<string name="no_osmand">OsmAnd ani OsmAnd+ není nainstalován.</string>
 </resources>
+
