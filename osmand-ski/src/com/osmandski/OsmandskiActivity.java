@@ -144,6 +144,8 @@ public class OsmandskiActivity extends Activity {
 		  mStatus.setText(R.string.downloading_msg);
 		  String file_URL=
 		  "http://www.pistes-nordiques.org/download/world-ski.obf.gz";
+		  //String file_URL=
+		  //"http://www.pistes-nordiques.org/download/test.txt.gz";
 		  final AsyncTask<String, String, String> DL = new DownloadFileAsync().execute(file_URL);
 
 		  Button buttonInstall = (Button)findViewById(R.id.install);
@@ -364,6 +366,7 @@ public class OsmandskiActivity extends Activity {
 			
 		} catch (IOException e) {
 			// flag for error dialog in postexecute
+			Log.e("MYAPP", "exception", e);
 			er = 1;
 			}
 		return null;
