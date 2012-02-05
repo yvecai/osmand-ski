@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="title">OsmAnd Ski Plugin 0.17 (beta)</string>
+	<string name="app_name">Osmand Ski</string>
+	<string name="summary">OsmAnd Ski is a plugin to install and update ski
+		pistes view on Osmand.</string>
+	<string name="install">Install</string>
+	<string name="osm">www.openstreetmap.org</string>
+	<string name="summary2">~8MB of ski trails will be downloaded.</string>
+	<string name="description">OsmAnd Ski will install world-wide ski trails
+		(~8MB of data) in your OsmAnd data directory. This give you free
+		access to an offline map containing more than 18\'000km of downhill
+		ski pistes, 16\'000 km of crosscountry, 11\'000 km of lifts world-wide.
+		Requires OsmAnd.
+		</string>
+	<string name="cancel">Cancel</string>
+	<string name="help"> Don\'t forget to change the renderer in OsmAnd.\n
+		Go to Settings > Maps > Vector Renderer and choose Winter.</string>
+	<string name="downloading_msg">"Downloading world-ski.obf (~8 MB)"</string>
+	<string name="pistes_status">Last pistes data update :</string>
+	<string name="quit">Quit</string>
+	<string name="recruit">Contribute !\n These ski maps are updated and
+		offered for free, thanks to OpenStreetMap. Start your GPS while skiing
+		and contribute to OpenStreetMap.</string>
+	<string name="server_error">Error connecting to ski pistes data server. \n
+	    Report to webmaster@pistes-nordiques.org</string>
+	<string name="unsupported">Your OsmAnd version is not supported, you should consider update to OsmAnd 0.7.0 or OsmAnd+ 0.7.0</string>
+	<string name="anyway">Install anyway</string>
+	<string name="no_osmand">Neither Osmand nor Osmand+ is installed.</string>	
+</resources>
