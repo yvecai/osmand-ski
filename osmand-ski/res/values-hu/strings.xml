@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.17 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin 0.19 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="summary">Az OsmAnd Ski egy beépülő, amivel sípályákat lehet telepíteni és frissíteni az OsmAndhoz.</string>
 	<string name="install">Telepítés</string>
