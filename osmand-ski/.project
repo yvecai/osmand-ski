@@ -30,4 +30,21 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>res/drawable-hdpi/icon.png</name>
+			<type>1</type>
+			<location>/home/yves/DEV/workspace/osmand ski/res/drawable-hdpi/icon.png</location>
+		</link>
+		<link>
+			<name>res/drawable-ldpi/icon.png</name>
+			<type>1</type>
+			<location>/home/yves/DEV/workspace/osmand ski/res/drawable-ldpi/icon.png</location>
+		</link>
+		<link>
+			<name>res/drawable-mdpi/icon.png</name>
+			<type>1</type>
+			<location>/home/yves/DEV/workspace/osmand ski/res/drawable-mdpi/icon.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
