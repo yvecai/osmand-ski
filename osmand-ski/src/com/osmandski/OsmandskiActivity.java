@@ -59,7 +59,7 @@ public class OsmandskiActivity extends Activity {
         // Download and show the mapped pistes status
         mStatus = (TextView) findViewById(R.id.status);
         TextView mPistes = (TextView) findViewById(R.id.pistes_status);
-        String str= DownloadText("http://www.pistes-nordiques.org/status/pistes_length.en.txt");
+        String str= DownloadText("http://www.pistes-nordiques.org/data/pistes_length.en.txt");
         mPistes.setText(str);
         
         // checking installed versions
@@ -93,7 +93,7 @@ public class OsmandskiActivity extends Activity {
         Button buttonInstall = (Button)findViewById(R.id.install);
         buttonInstall.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-      		  copyStyle(PlusStyleFileName);
+      		  //copyStyle(PlusStyleFileName);
       		  getPistes();
 
             }
@@ -101,7 +101,7 @@ public class OsmandskiActivity extends Activity {
         
     }
     // Copy the winter style
-    private void copyStyle(String styleFileName)
+    /*private void copyStyle(String styleFileName)
     {
 		  AssetManager am = getResources().getAssets();
 		  File f = new File(extStorageDirectory 
@@ -136,6 +136,7 @@ public class OsmandskiActivity extends Activity {
 			  Toast.makeText(OsmandskiActivity.this, "Fail. Osmand is not installed", Toast.LENGTH_LONG).show();
 		  }
     }
+    */
     
     // Download world-ski.obf
 	public void getPistes()
@@ -143,7 +144,7 @@ public class OsmandskiActivity extends Activity {
     	//Download the world-ski.obf
 		  mStatus.setText(R.string.downloading_msg);
 		  String file_URL=
-		  "http://www.pistes-nordiques.org/download/world-ski.obf.gz";
+		  "http://www.pistes-nordiques.org/download/World-ski_2.obf.gz";
 		  //String file_URL=
 		  //"http://www.pistes-nordiques.org/download/test.txt.gz";
 		  final AsyncTask<String, String, String> DL = new DownloadFileAsync().execute(file_URL);
@@ -167,8 +168,8 @@ public class OsmandskiActivity extends Activity {
 	protected void end(){
 		mStatus.setText("Done");
 		File sd=Environment.getExternalStorageDirectory();
-		File f= new File(sd,"/osmand/world-ski.obf.part");
-		f.renameTo(new File(sd , "/osmand/world-ski.obf"));
+		File f= new File(sd,"/osmand/World-ski_2.obf.part");
+		f.renameTo(new File(sd , "/osmand/World-ski_2.obf"));
 		Button buttonCancel = (Button)findViewById(R.id.cancel);
 		buttonCancel.setVisibility(View.GONE);
 		//Toast.makeText(OsmandskiActivity.this, R.string.help, Toast.LENGTH_LONG).show();
@@ -335,7 +336,7 @@ public class OsmandskiActivity extends Activity {
 		int lenghtOfFile = connexion.getContentLength();
 		Log.d("ANDRO_ASYNC", "Length of file: " + lenghtOfFile);
 
-		File f = new File(extStorageDirectory = Environment.getExternalStorageDirectory().toString()+"/osmand/world-ski.obf.part");
+		File f = new File(extStorageDirectory = Environment.getExternalStorageDirectory().toString()+"/osmand/World-ski_2.obf.part");
 
 		InputStream zinput = new BufferedInputStream(url.openStream());
 		GZIPInputStream input = new GZIPInputStream(new BufferedInputStream(zinput));

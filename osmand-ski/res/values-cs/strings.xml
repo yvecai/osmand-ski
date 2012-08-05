@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.20 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin 0.21 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="summary">OsmAnd Ski je plugin na instalaci a aktualizaci map 
 		sjezdovek v OsmAnd.</string>
