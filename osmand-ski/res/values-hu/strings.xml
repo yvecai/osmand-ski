@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.21 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin 0.22 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="summary">Az OsmAnd Ski egy beépülő, amivel sípályákat lehet telepíteni és frissíteni az OsmAndhoz.</string>
 	<string name="install">Telepítés</string>
 	<string name="osm">www.openstreetmap.hu</string>
 	<string name="summary2">~8MB síútvonal lesz letöltve.</string>
 	<string name="description">Az OsmAnd Ski síútvonal térképeket fog telepíteni
-		az egész világból az OsmAnd könyvtárába (kb. 8 MB adat). Ezzel a készülékedre
-		kerül egy olyan offline térkép, ami 18\'000 km lesikló sípályát,
-		16\'000 km sífutóutat és 11\'000 km síliftet tartalmaz az egész világból.
+		az egész világból az OsmAnd könyvtárába (kb. 12 MB adat). Ezzel a készülékedre
+		kerül egy olyan offline térkép, ami 23\'000 km lesikló sípályát,
+		20\'000 km sífutóutat és 13\'000 km síliftet tartalmaz az egész világból.
 		Az OsmAnd telepítve kell legyen.
 		</string>
 	<string name="cancel">Mégsem</string>
 	<string name="help"> Ne felejtsd el átállítani a renderelőt az OsmAndban.\n
 		Beállítások > Térképbeállítások > Vektoros megjelenítés és válaszd ki a Wintert.</string>
-	<string name="downloading_msg">"world-ski.obf letöltése (~8 MB)"</string>
+	<string name="downloading_msg">"world-ski.obf letöltése (~12 MB)"</string>
 	<string name="pistes_status">Az utolsó frissítés pályaadatai:</string>
 	<string name="quit">Kilépés</string>
 	<string name="recruit">Közreműködj te is!\n Ezek a sítérképek az OpenStreetMapnek köszönhetően készültek.

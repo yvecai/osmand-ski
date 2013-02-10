@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.21 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin 0.22 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="thanks">grazie a :</string>
 	<string name="summary">OsmAnd Ski è un plugin che installa e aggiorna
@@ -9,17 +9,17 @@
 	<string name="osm">www.openstreetmap.org</string>
 	<string name="pn">www.pistes-nordiques.org</string>
 	<string name="oa">www.osmand.net</string>
-	<string name="summary2">Saranno scaricati ~8MB di piste da sci.</string>
+	<string name="summary2">Saranno scaricati ~12MB di piste da sci.</string>
 	<string name="description">OsmAnd Ski installerà piste da sci da tutto il mondo
 		(~8MB di dati) nella tua directory data/ di OsmAnd. Ti darà
-		accesso libero ad una mappa offline contenente più di 18 mila km di piste da sci alpino,
-		16 mila km di piste da fondo e 11 mila km di impianti di risalita da tutto il mondo.
+		accesso libero ad una mappa offline contenente più di 20 mila km di piste da sci alpino,
+		23 mila km di piste da fondo e 13 mila km di impianti di risalita da tutto il mondo.
 		Richiede OsmAnd.</string>
 	<string name="cancel">Cancella</string>
 	<string name="help"> Non dimenticarti di cambiare il renderer in OsmAnd.\n
 		Vai in Impostazioni > Mappe > Renderer Vettoriale e scegli Inverno.</string>
 	<string name="choose_version">Scegli la tua versione di OsmAnd :</string>
-	<string name="downloading_msg">"Scaricando world-ski.obf (~8 MB)"</string>
+	<string name="downloading_msg">"Scaricando world-ski.obf (~12 MB)"</string>
 	<string name="pistes_status">Ultimo aggiornamento dei dati :</string>
 	<string name="quit">Chiudi</string>
 	<string name="recruit">Contribuisci !\n Queste mappe delle piste sono aggiornate e offerte 

@@ -1,9 +1,11 @@
 package com.osmandski;
 
-import android.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 
 import java.io.BufferedInputStream;
@@ -27,6 +29,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -84,10 +87,10 @@ public class OsmandskiActivity extends Activity {
 		
 		int higherVersion= Math.max(osmandVersionCode,osmandPlusVersionCode);
 		if (higherVersion == 0) {
-			showDialog(DIALOG_NO_OSMAND);
+			new MyDialogFragment(OsmandskiActivity.this,DIALOG_NO_OSMAND).show(getFragmentManager(), "Error");
 		}
 		else if (higherVersion < 40){
-			showDialog(DIALOG_BAD_OSMAND_VERSION);
+			new MyDialogFragment(OsmandskiActivity.this,DIALOG_BAD_OSMAND_VERSION).show(getFragmentManager(), "Error");
 		}
 	    
 		// do the job: Copy the render.xml to sdcard/osmand/rendering and download world-ski.obf
@@ -101,43 +104,6 @@ public class OsmandskiActivity extends Activity {
         });
         
     }
-    // Copy the winter style
-    /*private void copyStyle(String styleFileName)
-    {
-		  AssetManager am = getResources().getAssets();
-		  File f = new File(extStorageDirectory 
-				  = Environment.getExternalStorageDirectory().toString()+"/osmand");
-		  if(f.isDirectory()) {
-			  try {
-				  //open a stream
-				  InputStream inStream = null;
-				  inStream = am.open(styleFileName);
-				  OutputStream outStream = null;
-				  try {
-					  outStream = new FileOutputStream(f + "/rendering/winter.render.xml");
-					  try {
-						  copyFile(inStream, outStream);
-						  inStream.close();
-						  inStream = null;
-						  outStream.flush();
-						  outStream.close();
-						  outStream = null; 
-					  } catch (IOException e){
-						  Toast.makeText(OsmandskiActivity.this, "Error, can't copy style", Toast.LENGTH_LONG).show();
-					  }
-				  } catch (IOException e){
-					  Toast.makeText(OsmandskiActivity.this, "Error, can't open output", Toast.LENGTH_LONG).show();
-				  }
-			  } catch (IOException e) {
-				  //fail if the file cannot be read
-				  Toast.makeText(OsmandskiActivity.this, "Error, giving up", Toast.LENGTH_LONG).show();
-			  } 
-			  //Toast.makeText(OsmandskiActivity.this, "Style installed", Toast.LENGTH_LONG).show();
-		  } else {
-			  Toast.makeText(OsmandskiActivity.this, "Fail. Osmand is not installed", Toast.LENGTH_LONG).show();
-		  }
-    }
-    */
     
     // Download world-ski.obf
 	public void getPistes()
@@ -189,49 +155,6 @@ public class OsmandskiActivity extends Activity {
 		dialog.show();
 	}
 	
-    // Error dialogs declaration
-    protected Dialog onCreateDialog(int id) {
-    	
-        switch(id) {
-        case DIALOG_NO_OSMAND:
-	        return new AlertDialog.Builder(OsmandskiActivity.this)
-	        	.setMessage(R.string.no_osmand)
-	               .setCancelable(false)
-	               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
-	                   public void onClick(DialogInterface dialog, int id) {
-	                        finish();
-	                   }
-	               })
-	        .create();
-
-        case DIALOG_BAD_OSMAND_VERSION:
-	        return new AlertDialog.Builder(OsmandskiActivity.this)
-	        		.setMessage(R.string.unsupported)
-	               .setCancelable(false)
-	               	               .setNegativeButton(R.string.anyway, new DialogInterface.OnClickListener() {
-	                   public void onClick(DialogInterface dialog, int id) {
-	                	   dialog.cancel();
-	                   }
-	               })
-	               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
-	                   public void onClick(DialogInterface dialog, int id) {
-	                        finish();
-	                   }
-	               })
-	        .create();
-        case DIALOG_SERVER_ERROR:
-	        return new AlertDialog.Builder(OsmandskiActivity.this)
-	        	.setMessage(R.string.server_error)
-	        	.setCancelable(false)
-	        	.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
-	        		public void onClick(DialogInterface dialog, int id) {
-	        			finish();
-	        			}
-	               })
-	               .create();
-        }
-        return null;
-    }
     
     // Downloading a simple text file
     private String DownloadText(String URL)
@@ -256,17 +179,17 @@ public class OsmandskiActivity extends Activity {
               return str;  
         } catch (MalformedURLException e) {
         	e.printStackTrace();
-        	showDialog(DIALOG_SERVER_ERROR);
+			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
         	return "";
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            showDialog(DIALOG_SERVER_ERROR);
+			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
             return "";
         }catch (RuntimeException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            showDialog(DIALOG_SERVER_ERROR);
+			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
             return "";
         }
        
@@ -368,7 +291,7 @@ public class OsmandskiActivity extends Activity {
 			
 		} catch (IOException e) {
 			// flag for error dialog in postexecute
-			Log.e("MYAPP", "exception", e);
+			Log.e("OsmandSki", "exception", e);
 			er = 1;
 			}
 		return null;
@@ -384,7 +307,7 @@ public class OsmandskiActivity extends Activity {
 		protected void onPostExecute(String unused) {
 			//Toast.makeText(OsmandskiActivity.this, "Done", Toast.LENGTH_LONG).show();
 			if (er == 1) {
-				showDialog(DIALOG_SERVER_ERROR);
+				new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
 			}
 			else {
 					end();
@@ -392,4 +315,55 @@ public class OsmandskiActivity extends Activity {
 		}
 	}
 
+	class MyDialogFragment extends DialogFragment{
+	    Context mContext;
+	    int mType;
+	    public MyDialogFragment(Context context, int errorType) {
+	        mContext = context;
+	        mType  =errorType;
+	    }
+	    @Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	        switch(mType) {
+	        case DIALOG_NO_OSMAND:
+		        return new AlertDialog.Builder(OsmandskiActivity.this)
+		        	.setMessage(R.string.no_osmand)
+		               .setCancelable(false)
+		               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                        finish();
+		                   }
+		               })
+		        .create();
+
+	        case DIALOG_BAD_OSMAND_VERSION:
+		        return new AlertDialog.Builder(OsmandskiActivity.this)
+		        		.setMessage(R.string.unsupported)
+		               .setCancelable(false)
+		               	               .setNegativeButton(R.string.anyway, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                	   dialog.cancel();
+		                   }
+		               })
+		               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                        finish();
+		                   }
+		               })
+		        .create();
+	        case DIALOG_SERVER_ERROR:
+		        return new AlertDialog.Builder(OsmandskiActivity.this)
+		        	.setMessage(R.string.server_error)
+		        	.setCancelable(false)
+		        	.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+		        		public void onClick(DialogInterface dialog, int id) {
+		        			finish();
+		        			}
+		               })
+		               .create();
+	        }
+	        return null;
+	    }
+	}
 }
+

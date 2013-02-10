@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.21 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin 0.22 (beta)</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="thanks">спасибо :</string>
 	<string name="summary">OsmAnd Ski это плагин для установки и обновления лыжных трасс в Osmand.</string>
@@ -8,17 +8,17 @@
 	<string name="osm">www.openstreetmap.org</string>
 	<string name="pn">www.pistes-nordiques.org</string>
 	<string name="oa">www.osmand.net</string>
-	<string name="summary2">~8MB карта лыжных трасс буде загружена .</string>
+	<string name="summary2">~12MB карта лыжных трасс буде загружена .</string>
 	<string name="description">OsmAnd Ski установит лыжные трассы для всего мира
 		(размер ~8MB) в ваши OsmAnd данные. Это даст вам возможность
-		для доступа к офлайн карте более чем 18\'000km спусков и 
-		трасс, 16\'000 km пересеченной местности, 11\'000 km подъемников.
+		для доступа к офлайн карте более чем 20\'000km спусков и 
+		трасс, 23\'000 km пересеченной местности, 13\'000 km подъемников.
 		Необходим OsmAnd.</string>
 	<string name="cancel">Отмена</string>
 	<string name="help"> Не забудьте изменить рендеринг в Османде.\n
 		Настройки > Карты > Векторный Рендеринг и выберите Winter.</string>
 	<string name="choose_version">Выберите OsmAnd версию :</string>
-	<string name="downloading_msg">"Загрузка world-ski.obf (~8 MB)"</string>
+	<string name="downloading_msg">"Загрузка world-ski.obf (~12 MB)"</string>
 	<string name="pistes_status">Последнее обновление данных :</string>
 	<string name="quit">Выход</string>
 	<string name="recruit">Делитесь !\n Эти лыжные трассы пределагаются
