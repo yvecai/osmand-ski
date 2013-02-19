@@ -1,13 +1,6 @@
 package com.osmandski;
 
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.os.Bundle;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,8 +12,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.lang.Math;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.zip.GZIPInputStream;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
@@ -28,14 +34,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.AssetManager;
-import java.util.zip.GZIPInputStream;
 
 
 public class OsmandskiActivity extends Activity {
@@ -75,22 +73,24 @@ public class OsmandskiActivity extends Activity {
 		try {
 			info = manager.getPackageInfo("net.osmand", 0);
 			osmandVersionCode= info.versionCode;
+			//String appPath = info.applicationInfo.dataDir;
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		try {
 			info = manager.getPackageInfo("net.osmand.plus", 0);
 			osmandPlusVersionCode= info.versionCode;
+			//String appPath = info.applicationInfo.dataDir;
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 		int higherVersion= Math.max(osmandVersionCode,osmandPlusVersionCode);
 		if (higherVersion == 0) {
-			new MyDialogFragment(OsmandskiActivity.this,DIALOG_NO_OSMAND).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,getResources().getString(R.string.no_osmand)).show(getFragmentManager(), "Error");
 		}
 		else if (higherVersion < 40){
-			new MyDialogFragment(OsmandskiActivity.this,DIALOG_BAD_OSMAND_VERSION).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,getResources().getString(R.string.unsupported)).show(getFragmentManager(), "Error");
 		}
 	    
 		// do the job: Copy the render.xml to sdcard/osmand/rendering and download world-ski.obf
@@ -179,17 +179,15 @@ public class OsmandskiActivity extends Activity {
               return str;  
         } catch (MalformedURLException e) {
         	e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
         	return "";
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
             return "";
         }catch (RuntimeException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
             return "";
         }
        
@@ -235,11 +233,46 @@ public class OsmandskiActivity extends Activity {
 	      out.write(buffer, 0, read);
 	    }
 	}
+
+	public static HashSet<String> getExternalMounts() {
+	    final HashSet<String> out = new HashSet<String>();
+	    String reg = "(?i).*vold.*(vfat|ntfs|exfat|fat32|ext3|ext4).*rw.*";
+	    String s = "";
+	    try {
+	        final Process process = new ProcessBuilder().command("mount")
+	                .redirectErrorStream(true).start();
+	        process.waitFor();
+	        final InputStream is = process.getInputStream();
+	        final byte[] buffer = new byte[1024];
+	        while (is.read(buffer) != -1) {
+	            s = s + new String(buffer);
+	        }
+	        is.close();
+	    } catch (final Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    // parse output
+	    final String[] lines = s.split("\n");
+	    for (String line : lines) {
+	        if (!line.toLowerCase(Locale.US).contains("asec")) {
+	            if (line.matches(reg)) {
+	                String[] parts = line.split(" ");
+	                for (String part : parts) {
+	                    if (part.startsWith("/"))
+	                        if (!part.toLowerCase(Locale.US).contains("vold"))
+	                            out.add(part);
+	                }
+	            }
+	        }
+	    }
+	    return out;
+	}
 	
 	// Async downloader
 	class DownloadFileAsync extends AsyncTask<String, String, String> {
 		
-		private int er = 0;
+		private String er = "";
         
 		@Override
 		protected void onPreExecute() {
@@ -259,8 +292,18 @@ public class OsmandskiActivity extends Activity {
 
 		int lenghtOfFile = connexion.getContentLength();
 		Log.d("ANDRO_ASYNC", "Length of file: " + lenghtOfFile);
-
-		File f = new File(extStorageDirectory = Environment.getExternalStorageDirectory().toString()+"/osmand/World-ski_2.obf.part");
+		HashSet<String> set =getExternalMounts();
+		String[] list =set.toArray(new String[set.size()]);
+		String OsmandPath ="";
+		for (String p : list) {
+			File d = new File(p+"/osmand/");
+			if (d.isDirectory()){
+				OsmandPath=p;
+				break;
+			}
+		}
+		
+		File f = new File(OsmandPath+"/osmand/World-ski_2.obf.part");
 
 		InputStream zinput = new BufferedInputStream(url.openStream());
 		GZIPInputStream input = new GZIPInputStream(new BufferedInputStream(zinput));
@@ -292,7 +335,7 @@ public class OsmandskiActivity extends Activity {
 		} catch (IOException e) {
 			// flag for error dialog in postexecute
 			Log.e("OsmandSki", "exception", e);
-			er = 1;
+			er = e.getMessage();
 			}
 		return null;
 
@@ -305,9 +348,9 @@ public class OsmandskiActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String unused) {
-			//Toast.makeText(OsmandskiActivity.this, "Done", Toast.LENGTH_LONG).show();
-			if (er == 1) {
-				new MyDialogFragment(OsmandskiActivity.this,DIALOG_SERVER_ERROR).show(getFragmentManager(), "Error");
+
+			if (er != "") {
+				new MyDialogFragment(OsmandskiActivity.this,er).show(getFragmentManager(), "Error");
 			}
 			else {
 					end();
@@ -317,52 +360,22 @@ public class OsmandskiActivity extends Activity {
 
 	class MyDialogFragment extends DialogFragment{
 	    Context mContext;
-	    int mType;
-	    public MyDialogFragment(Context context, int errorType) {
+	    String mType;
+	    public MyDialogFragment(Context context, String error) {
 	        mContext = context;
-	        mType  =errorType;
+	        mType  =error;
 	    }
 	    @Override
 	    public Dialog onCreateDialog(Bundle savedInstanceState) {
-	        switch(mType) {
-	        case DIALOG_NO_OSMAND:
-		        return new AlertDialog.Builder(OsmandskiActivity.this)
-		        	.setMessage(R.string.no_osmand)
-		               .setCancelable(false)
-		               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
-		                   public void onClick(DialogInterface dialog, int id) {
-		                        finish();
-		                   }
-		               })
-		        .create();
-
-	        case DIALOG_BAD_OSMAND_VERSION:
-		        return new AlertDialog.Builder(OsmandskiActivity.this)
-		        		.setMessage(R.string.unsupported)
-		               .setCancelable(false)
-		               	               .setNegativeButton(R.string.anyway, new DialogInterface.OnClickListener() {
-		                   public void onClick(DialogInterface dialog, int id) {
-		                	   dialog.cancel();
-		                   }
-		               })
-		               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
-		                   public void onClick(DialogInterface dialog, int id) {
-		                        finish();
-		                   }
-		               })
-		        .create();
-	        case DIALOG_SERVER_ERROR:
-		        return new AlertDialog.Builder(OsmandskiActivity.this)
-		        	.setMessage(R.string.server_error)
-		        	.setCancelable(false)
-		        	.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
-		        		public void onClick(DialogInterface dialog, int id) {
-		        			finish();
-		        			}
-		               })
-		               .create();
-	        }
-	        return null;
+	    	return new AlertDialog.Builder(OsmandskiActivity.this)
+        	.setMessage(mType)
+               .setCancelable(false)
+               .setPositiveButton(R.string.quit, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                   }
+               })
+               .create();
 	    }
 	}
 }
