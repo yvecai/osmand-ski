@@ -61,7 +61,7 @@ public class OsmandskiActivity extends Activity {
         // Download and show the mapped pistes status
         mStatus = (TextView) findViewById(R.id.status);
         TextView mPistes = (TextView) findViewById(R.id.pistes_status);
-        String str= DownloadText("http://www.pistes-nordiques.org/data/pistes_length.en.txt");
+        String str= DownloadText("http://www.opensnowmap.org/data/pistes_length.en.txt");
         mPistes.setText(str);
         
         // checking installed versions
@@ -111,9 +111,9 @@ public class OsmandskiActivity extends Activity {
     	//Download the world-ski.obf
 		  mStatus.setText(R.string.downloading_msg);
 		  String file_URL=
-		  "http://www.pistes-nordiques.org/download/World-ski_2.obf.gz";
+		  "http://www.opensnowmap.org/download/World-ski_2.obf.gz";
 		  //String file_URL=
-		  //"http://www.pistes-nordiques.org/download/test.txt.gz";
+		  //"http://www.opensnowmap.org/download/test.txt.gz";
 		  final AsyncTask<String, String, String> DL = new DownloadFileAsync().execute(file_URL);
 
 		  Button buttonInstall = (Button)findViewById(R.id.install);
