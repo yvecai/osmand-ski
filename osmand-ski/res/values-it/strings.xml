@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.23 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="thanks">grazie a :</string>
 	<string name="summary">OsmAnd Ski è un plugin che installa e aggiorna
@@ -28,7 +28,7 @@
 	<string name="server_error">Errore di connessione al server delle piste. \n
 	    Segnalalo a webmaster@pistes-nordiques.org</string>
 	<string name="unsupported">La tua versione di OsmAnd non è supportata, dovresti
-		aggiornare a OsmAnd 0.7.0 o OsmAnd+ 0.7.0</string>
+		aggiornare</string>
 	<string name="anyway">Installa lo stesso</string>
 	<string name="no_osmand">Nè Osmand nè Osmand+ sono installati.</string>	
 </resources>

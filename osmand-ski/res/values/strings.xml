@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.23 (beta)</string>
+    <string name="Version">0.25</string>
+	<string name="title">OsmAnd Ski Plugin</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="summary">OsmAnd Ski is a plugin to install and update ski
 		pistes view on Osmand.</string>
@@ -24,7 +25,7 @@
 		and contribute to OpenStreetMap.</string>
 	<string name="server_error">Error connecting to ski pistes data server. \n
 	    Report to webmaster@pistes-nordiques.org</string>
-	<string name="unsupported">Your OsmAnd version is not supported, you should consider update to OsmAnd 0.7.0 or OsmAnd+ 0.7.0</string>
+	<string name="unsupported">Your OsmAnd version is not supported, you should consider update</string>
 	<string name="anyway">Install anyway</string>
 	<string name="no_osmand">Neither Osmand nor Osmand+ is installed.</string>	
 </resources>

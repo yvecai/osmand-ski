@@ -16,10 +16,12 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
-import android.app.Activity;
+//import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+//import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
@@ -36,11 +38,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-public class OsmandskiActivity extends Activity {
+public class OsmandskiActivity extends FragmentActivity {
 	String extStorageDirectory;
 
     private ProgressBar mProgress;
     private TextView mStatus;
+    private TextView mTitle;
     
     static final int DIALOG_NO_OSMAND = 0;
     static final int DIALOG_BAD_OSMAND_VERSION = 1;
@@ -55,6 +58,13 @@ public class OsmandskiActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        mTitle = (TextView) findViewById(R.id.textView2);
+        mTitle.setText(
+        			getResources().getString(R.string.title) 
+        			+" " 
+        			+ getResources().getString(R.string.Version));
+        
         
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         
@@ -87,10 +97,12 @@ public class OsmandskiActivity extends Activity {
 		
 		int higherVersion= Math.max(osmandVersionCode,osmandPlusVersionCode);
 		if (higherVersion == 0) {
-			new MyDialogFragment(OsmandskiActivity.this,getResources().getString(R.string.no_osmand)).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,
+					getResources().getString(R.string.no_osmand)).show( getSupportFragmentManager(), "Error");
 		}
 		else if (higherVersion < 40){
-			new MyDialogFragment(OsmandskiActivity.this,getResources().getString(R.string.unsupported)).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,
+					getResources().getString(R.string.unsupported)).show( getSupportFragmentManager(), "Error");
 		}
 	    
 		// do the job: Copy the render.xml to sdcard/osmand/rendering and download world-ski.obf
@@ -179,15 +191,18 @@ public class OsmandskiActivity extends Activity {
               return str;  
         } catch (MalformedURLException e) {
         	e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,
+					e.getMessage()).show( getSupportFragmentManager(), "Error");
         	return "";
         } catch (IOException e) {
             e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,
+					e.getMessage()).show( getSupportFragmentManager(), "Error");
             return "";
         }catch (RuntimeException e) {
             e.printStackTrace();
-			new MyDialogFragment(OsmandskiActivity.this,e.getMessage()).show(getFragmentManager(), "Error");
+			new MyDialogFragment(OsmandskiActivity.this,
+					e.getMessage()).show( getSupportFragmentManager(), "Error");
             return "";
         }
        
@@ -350,7 +365,7 @@ public class OsmandskiActivity extends Activity {
 		protected void onPostExecute(String unused) {
 
 			if (er != "") {
-				new MyDialogFragment(OsmandskiActivity.this,er).show(getFragmentManager(), "Error");
+				new MyDialogFragment(OsmandskiActivity.this,er).show( getSupportFragmentManager(), "Error");
 			}
 			else {
 					end();

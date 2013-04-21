@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="title">OsmAnd Ski Plugin 0.23 (beta)</string>
+	<string name="title">OsmAnd Ski Plugin</string>
 	<string name="app_name">Osmand Ski</string>
 	<string name="summary">Az OsmAnd Ski egy beépülő, amivel sípályákat lehet telepíteni és frissíteni az OsmAndhoz.</string>
 	<string name="install">Telepítés</string>
@@ -22,7 +22,7 @@
 		Kapcsold be a GPS-ed síelés közben, majd töltsd fel a nyomvonalat OpenStreetMapra.</string>
 	<string name="server_error">Nem sikerült kommunikálni a sípályaadat szerverrel. \n
 	    Jelentsd a webmaster@pistes-nordiques.org címen.</string>
-	<string name="unsupported">A te OsmAnd verziód nem támogatott. Fontold meg a frissítést OsmAnd 0.7.0-ra vagy OsmAnd+ 0.7.0-ra.</string>
+	<string name="unsupported">A te OsmAnd verziód nem támogatott. Fontold meg a frissítést.</string>
 	<string name="anyway">Telepítés mindenképp</string>
 	<string name="no_osmand">Sem OsmAnd sem OsmAnd+ nincs telepítve.</string>	
 </resources>
