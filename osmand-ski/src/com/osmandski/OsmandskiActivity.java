@@ -120,8 +120,18 @@ public class OsmandskiActivity extends FragmentActivity {
     // Download world-ski.obf
 	public void getPistes()
     {
+		HashSet<String> set =getExternalMounts();
+		String[] list =set.toArray(new String[set.size()]);
+		String OsmandPath ="";
+		for (String p : list) {
+			File d = new File(p+"/osmand/");
+			if (d.isDirectory()){
+				OsmandPath=p;
+				break;
+			}
+		}
     	//Download the world-ski.obf
-		  mStatus.setText(R.string.downloading_msg);
+		  mStatus.setText(OsmandPath+"/osmand/World-ski_2.obf");
 		  String file_URL=
 		  "http://www.opensnowmap.org/download/World-ski_2.obf.gz";
 		  //String file_URL=
@@ -146,9 +156,21 @@ public class OsmandskiActivity extends FragmentActivity {
 	// Final dialog
 	protected void end(){
 		mStatus.setText("Done");
-		File sd=Environment.getExternalStorageDirectory();
-		File f= new File(sd,"/osmand/World-ski_2.obf.part");
-		f.renameTo(new File(sd , "/osmand/World-ski_2.obf"));
+		
+		HashSet<String> set =getExternalMounts();
+		String[] list =set.toArray(new String[set.size()]);
+		String OsmandPath ="";
+		for (String p : list) {
+			File d = new File(p+"/osmand/");
+			if (d.isDirectory()){
+				OsmandPath=p;
+				break;
+			}
+		}
+		File f = new File(OsmandPath+"/osmand/World-ski_2.obf.part");
+		
+		f.renameTo(new File(OsmandPath , "/osmand/World-ski_2.obf"));
+		
 		Button buttonCancel = (Button)findViewById(R.id.cancel);
 		buttonCancel.setVisibility(View.GONE);
 		//Toast.makeText(OsmandskiActivity.this, R.string.help, Toast.LENGTH_LONG).show();
