@@ -120,18 +120,9 @@ public class OsmandskiActivity extends FragmentActivity {
     // Download world-ski.obf
 	public void getPistes()
     {
-		HashSet<String> set =getExternalMounts();
-		String[] list =set.toArray(new String[set.size()]);
-		String OsmandPath ="";
-		for (String p : list) {
-			File d = new File(p+"/osmand/");
-			if (d.isDirectory()){
-				OsmandPath=p;
-				break;
-			}
-		}
-    	//Download the world-ski.obf
-		  mStatus.setText(OsmandPath+"/osmand/World-ski_2.obf");
+		  String OsmandPath=FindDir("osmand");
+    	  //Download the world-ski.obf
+		  mStatus.setText(OsmandPath+"World-ski_2.obf");
 		  String file_URL=
 		  "http://www.opensnowmap.org/download/World-ski_2.obf.gz";
 		  //String file_URL=
@@ -157,19 +148,11 @@ public class OsmandskiActivity extends FragmentActivity {
 	protected void end(){
 		mStatus.setText("Done");
 		
-		HashSet<String> set =getExternalMounts();
-		String[] list =set.toArray(new String[set.size()]);
-		String OsmandPath ="";
-		for (String p : list) {
-			File d = new File(p+"/osmand/");
-			if (d.isDirectory()){
-				OsmandPath=p;
-				break;
-			}
-		}
-		File f = new File(OsmandPath+"/osmand/World-ski_2.obf.part");
+		String OsmandPath=FindDir("osmand");
 		
-		f.renameTo(new File(OsmandPath , "/osmand/World-ski_2.obf"));
+		File f = new File(OsmandPath+"World-ski_2.obf.part");
+		
+		f.renameTo(new File(OsmandPath ,"World-ski_2.obf"));
 		
 		Button buttonCancel = (Button)findViewById(R.id.cancel);
 		buttonCancel.setVisibility(View.GONE);
@@ -188,7 +171,28 @@ public class OsmandskiActivity extends FragmentActivity {
 		});
 		dialog.show();
 	}
-	
+	// Find osmand dir
+    private String FindDir(String dir){
+    	String OsmandPath ="";
+    	
+		HashSet<String> set =getExternalMounts();
+		String[] list =set.toArray(new String[set.size()]);
+		for (String p : list) {
+			File d = new File(p+"/"+dir+"/");
+			if (d.isDirectory()){
+				OsmandPath=p+"/"+dir+"/";
+				break;
+			}
+		}
+		if (OsmandPath == "") {
+			File sd=Environment.getExternalStorageDirectory();
+			File d= new File(sd+"/"+dir+"/"); 
+			if (d.isDirectory()){
+				OsmandPath=sd+"/"+dir+"/";
+			}
+		}
+		return OsmandPath;
+    }
     
     // Downloading a simple text file
     private String DownloadText(String URL)
@@ -329,18 +333,10 @@ public class OsmandskiActivity extends FragmentActivity {
 
 		int lenghtOfFile = connexion.getContentLength();
 		Log.d("ANDRO_ASYNC", "Length of file: " + lenghtOfFile);
-		HashSet<String> set =getExternalMounts();
-		String[] list =set.toArray(new String[set.size()]);
-		String OsmandPath ="";
-		for (String p : list) {
-			File d = new File(p+"/osmand/");
-			if (d.isDirectory()){
-				OsmandPath=p;
-				break;
-			}
-		}
 		
-		File f = new File(OsmandPath+"/osmand/World-ski_2.obf.part");
+		String OsmandPath=FindDir("osmand");
+		
+		File f = new File(OsmandPath+"World-ski_2.obf.part");
 
 		InputStream zinput = new BufferedInputStream(url.openStream());
 		GZIPInputStream input = new GZIPInputStream(new BufferedInputStream(zinput));
