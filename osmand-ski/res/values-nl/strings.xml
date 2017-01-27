@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="title">OsmAnd Ski Plugin</string>
+	<string name="app_name">Osmand Ski</string>
+	<string name="summary">OsmAnd Ski is een plugin om skipistes view te
+		installeren en updaten in Osmand.</string>
+	<string name="install">Installeer</string>
+	<string name="osm">www.openstreetmap.org</string>
+	<string name="summary2">~12MB aan skipistes worden gedownload.</string>
+	<string name="description">OsmAnd Ski zal wereldwijde skiroutes installeren
+		(~8MB aan data) in uw OsmAnd datadirectory. Dit geeft u gratis
+		toegang tot offline kaarten met wereldwijd meer dan 20.000km aan
+		downhill skipistes, 23.000 km aan crosscountry, 13.000 km aan liften.
+		Vereist OsmAnd.
+		</string>
+	<string name="cancel">Annuleer</string>
+	<string name="help"> Vergeet niet de juiste renderer in OsmAnd te selecteren.\n
+		Ga naar Instellingen > Kaarten > Vectorrendering en kies Winter.</string>
+	<string name="downloading_msg">"Downloaden van world-ski.obf (~12 MB)"</string>
+	<string name="pistes_status">Laatste pistedata update :</string>
+	<string name="quit">Sluit af</string>
+	<string name="recruit">Draag bij !\n Deze skikaarten zijn bijgewerkt en
+		gratis aangeboden, met dank aan OpenStreetMap. Start uw gps tijdens
+		tijdens skiën en draag bij aan OpenStreetMap.</string>
+	<string name="server_error">Fout met verbinden met skipistes dataserver. \n
+	    Rapporteer dit aan webmaster@pistes-nordiques.org</string>
+	<string name="unsupported">Uw versie van OsmAnd wordt niet ondersteund,
+	u zou een update moeten overwegen</string>
+	<string name="anyway">Installeer toch</string>
+	<string name="no_osmand">Zowel Osmand en Osmand+ zijn niet geïnstalleerd.</string>	
+</resources>
